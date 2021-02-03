@@ -94,8 +94,8 @@ class RabbitMQHandler(logging.Handler):
         handler.setFormatter(self.formatter)
         rabbitmq_logger = logging.getLogger('pika')
         rabbitmq_logger.addHandler(handler)
-        rabbitmq_logger.propagate = False
-        rabbitmq_logger.setLevel(logging.WARNING)
+        # rabbitmq_logger.propagate = False
+        rabbitmq_logger.setLevel(logging.DEBUG)
 
         if not self.connection or self.connection.is_closed:
             self.connection = pika.BlockingConnection(pika.ConnectionParameters(**self.connection_params))
